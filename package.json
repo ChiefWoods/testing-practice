@@ -1,0 +1,11 @@
+{
+  "name": "testing-practice",
+  "version": "1.0.0",
+  "description": "Testing practice for The Odin Project",
+  "main": "babel.config.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "ChiefWoods",
+  "license": "ISC"
+}
