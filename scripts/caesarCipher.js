@@ -1,5 +1,11 @@
 function caesarCipher(str, shift) {
-  const encrypted = '';
+  if (typeof(str) !== 'string') {
+    throw new Error('First argument passed is not a string');
+  }
+  if (typeof(shift) !== 'number') {
+    throw new Error('Second argument passed is not a number');
+  }
+  let encrypted = '';
   for (let i = 0; i < str.length; i++) {
     let charCode = str.codePointAt(i);
     if (charCode >= 97 && charCode <= 122) {
@@ -22,3 +28,5 @@ function caesarCipher(str, shift) {
   }
   return encrypted;
 }
+
+module.exports = caesarCipher;
