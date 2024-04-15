@@ -1,32 +1,34 @@
 function caesarCipher(str, shift) {
-  if (typeof(str) !== 'string') {
-    throw new Error('First argument passed is not a string');
+  if (typeof (str) !== 'string') {
+    throw new Error('First argument is not a string');
   }
-  if (typeof(shift) !== 'number') {
-    throw new Error('Second argument passed is not a number');
+
+  if (typeof (shift) !== 'number') {
+    throw new Error('Second argument is not a number');
   }
+
   let encrypted = '';
-  for (let i = 0; i < str.length; i++) {
+  const len = str.length;
+
+  for (let i = 0; i < len; i++) {
     let charCode = str.codePointAt(i);
-    if (charCode >= 97 && charCode <= 122) {
-      let shifted = charCode + Math.abs(shift);
-      if (shifted > 122) {
-        encrypted += String.fromCodePoint(shifted % 123 + 97);
-      } else {
-        encrypted += String.fromCodePoint(shifted);
-      }
-    } else if (charCode >= 65 && charCode <= 90) {
-      let shifted = charCode + Math.abs(shift);
-      if (shifted > 90) {
-        encrypted += String.fromCodePoint(shifted % 91 + 65);
-      } else {
-        encrypted += String.fromCodePoint(shifted);
-      }
-    } else {
-      encrypted += str.at(i);
-    }
+
+    encrypted += (charCode >= 97 && charCode <= 122)
+      ? appendEncrypted(97, 122, charCode, shift)
+      : (charCode >= 65 && charCode <= 90)
+        ? appendEncrypted(65, 90, charCode, shift)
+        : str.charAt(i);
   }
+
   return encrypted;
+}
+
+function appendEncrypted(lowerBound, upperBound, charCode, shift) {
+  const shifted = charCode + Math.abs(shift);
+
+  return shifted > upperBound
+    ? String.fromCodePoint(shifted % (upperBound + 1) + lowerBound)
+    : String.fromCodePoint(shifted);
 }
 
 module.exports = caesarCipher;

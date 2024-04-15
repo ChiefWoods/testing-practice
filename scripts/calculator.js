@@ -4,22 +4,18 @@ const calculator = {
       throw new Error('Argument is not a number or undefined');
     }
   },
-
   add: (x, y) => {
     calculator.areOperandsNumbers(x, y);
-    return Math.round((x + y) * Math.pow(10, 2)) / Math.pow(10, 2);;
+    return Math.round((x + y) * Math.pow(10, 2)) / Math.pow(10, 2);
   },
-
   subtract: (x, y) => {
     calculator.areOperandsNumbers(x, y);
-    return Math.round((x - y) * Math.pow(10, 2)) / Math.pow(10, 2);;
+    return Math.round((x - y) * Math.pow(10, 2)) / Math.pow(10, 2);
   },
-
   divide: (x, y) => {
     calculator.areOperandsNumbers(x, y);
-    return y === 0 ? 'Cannot divide against 0' : Math.round((x / y) * Math.pow(10, 2)) / Math.pow(10, 2);;
+    return y === 0 ? Infinity : Math.round((x / y) * Math.pow(10, 2)) / Math.pow(10, 2);
   },
-
   multiply: (x, y) => {
     calculator.areOperandsNumbers(x, y);
     return Math.round((x * y) * Math.pow(10, 2)) / Math.pow(10, 2);
